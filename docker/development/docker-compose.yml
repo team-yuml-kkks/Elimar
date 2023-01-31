@@ -1,0 +1,39 @@
+version: '3.8'
+
+networks:
+  elimar:
+
+volumes:
+  elimar-db:
+  elimar-pip-cache:
+
+services:
+  elimar-db:
+    image: postgres:13-alpine
+    restart: "no"
+    networks:
+      elimar:
+    environment:
+      POSTGRES_DB: elimar
+      POSTGRES_USER: elimar
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - "elimar-db:/var/lib/postgresql/data"
+
+  elimar-backend:
+    build:
+        context: ../..
+        dockerfile: ./docker/images/development/backend/Dockerfile
+    networks:
+        elimar:
+    working_dir: /app
+    volumes:
+        - ../..:/app
+        - elimar-pip-cache:/root/.cache/pip
+    environment:
+      ELIMAR_DATABASE_URL: "postgresql://elimar:secret@elimar-db/elimar"
+    ports:
+        - 8000:8000
+    command: ['./scripts/run-dev.sh']
+    depends_on:
+        - elimar-db
