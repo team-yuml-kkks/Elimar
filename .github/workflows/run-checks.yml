@@ -10,6 +10,9 @@ jobs:
   code-checks:
     runs-on: ubuntu-latest
 
+    env:
+      ELIMAR_DATABASE_URL: 'mock'
+
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -26,3 +29,6 @@ jobs:
 
       - name: Check black
         run: black . --check
+
+      - name: Check mypy
+        run: find . -name '*.py' | grep -v migrations | xargs mypy
