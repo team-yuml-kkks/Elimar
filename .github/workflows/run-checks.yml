@@ -10,6 +10,24 @@ jobs:
   code-checks:
     runs-on: ubuntu-latest
 
+    env:
+      ELIMAR_DATABASE_URL: 'postgresql://elimar:secret@localhost/elimar'
+
+    services:
+      db:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: secret
+          POSTGRES_USER: elimar
+          POSTGRES_DB: elimar
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -26,3 +44,6 @@ jobs:
 
       - name: Check black
         run: black . --check
+
+      - name: Check mypy
+        run: find . -name '*.py' | grep -v migrations | xargs mypy
