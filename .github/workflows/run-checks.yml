@@ -47,3 +47,6 @@ jobs:
 
       - name: Check mypy
         run: find . -name '*.py' | grep -v migrations | xargs mypy
+
+      - name: Check ruff
+        run: find . -name '*.py' | grep -v migrations | xargs ruff
