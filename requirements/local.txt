@@ -3,3 +3,4 @@ black==23.1.0
 mypy==0.991
 django-stubs==1.14.0
 types-dj-database-url==1.2.0.0
+ruff==0.0.241

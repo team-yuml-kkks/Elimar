@@ -1,0 +1,53 @@
+[tool.ruff]
+line-length = 100
+
+# Enabled plugins
+select = [
+    "F", # pyflakes
+    "E", # pycodestyle
+    "I", # isort
+    "UP", # pyupgrade
+    "N", # pep8-naiming
+    "C", # flake8-comprehensions
+    "B", # flake8-bugbear
+    "T", # flake8-print
+    "A", # flake8-builtins
+    "Q", # flake8-quotes
+    "ANN" # flake8-annotations
+]
+ignore = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+per-file-ignores = {"manage.py" = ["ANN201"]}
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Assume Python 3.11.
+target-version = "py311"
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
