@@ -1,0 +1,28 @@
+name: Run code checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  code-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install requirements
+        run: pip install -r requirements/local.txt
+
+      - name: Check black
+        run: black . --check
