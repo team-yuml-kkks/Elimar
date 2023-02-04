@@ -2,7 +2,11 @@ name: Run code checks
 
 on:
   pull_request:
+    paths-ignore:
+      - 'docs/**'
   push:
+    paths-ignore:
+      - 'docs/**'
     branches:
       - main
 
