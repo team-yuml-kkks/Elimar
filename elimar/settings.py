@@ -74,8 +74,6 @@ TEMPLATES = [
     },
 ]
 
-print(TEMPLATES)
-
 WSGI_APPLICATION = "elimar.wsgi.application"
 
 
