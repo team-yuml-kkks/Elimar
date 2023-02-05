@@ -58,7 +58,10 @@ ROOT_URLCONF = "elimar.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            os.path.join(BASE_DIR, "elimar/modules/users/templates"),
+            os.path.join(BASE_DIR, "elimar/templates"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -70,6 +73,8 @@ TEMPLATES = [
         },
     },
 ]
+
+print(TEMPLATES)
 
 WSGI_APPLICATION = "elimar.wsgi.application"
 
@@ -124,3 +129,5 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
+
+LOGIN_REDIRECT_URL = "/"
