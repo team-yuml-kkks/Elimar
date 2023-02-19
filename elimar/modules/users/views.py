@@ -8,11 +8,11 @@ from .forms import FirstUserSignUpForm
 
 class FirstUserSignUpView(CreateView):
     form_class = FirstUserSignUpForm
-    success_url = reverse_lazy('login')
-    template_name = 'registration/first_user_sign_up.html'
+    success_url = reverse_lazy("login")
+    template_name = "registration/first_user_sign_up.html"
 
     def dispatch(self, request, *args, **kwargs):
         if get_user_model().objects.first():
             return redirect(reverse("home"))
-        
+
         return super().dispatch(request, *args, **kwargs)
