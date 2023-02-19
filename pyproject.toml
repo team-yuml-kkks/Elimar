@@ -15,7 +15,7 @@ select = [
     "Q", # flake8-quotes
     "ANN" # flake8-annotations
 ]
-ignore = []
+ignore = ["ANN001", "ANN002", "ANN003", "ANN101", "ANN201"]
 
 # Exclude a variety of commonly ignored directories.
 exclude = [
