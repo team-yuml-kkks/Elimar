@@ -6,6 +6,7 @@ networks:
 volumes:
   elimar-db:
   elimar-pip-cache:
+  elimar-frontend-cache:
 
 services:
   elimar-db:
@@ -22,18 +23,31 @@ services:
 
   elimar-backend:
     build:
-        context: ../..
-        dockerfile: ./docker/images/development/backend/Dockerfile
+      context: ../..
+      dockerfile: ./docker/images/development/backend/Dockerfile
     networks:
-        elimar:
+      elimar:
     working_dir: /app
     volumes:
-        - ../..:/app
-        - elimar-pip-cache:/root/.cache/pip
+      - ../..:/app
+      - elimar-pip-cache:/root/.cache/pip
     environment:
       ELIMAR_DATABASE_URL: "postgresql://elimar:secret@elimar-db/elimar"
     ports:
-        - 8000:8000
+      - 8000:8000
     command: ['./scripts/run-dev.sh']
     depends_on:
-        - elimar-db
+      - elimar-db
+
+  elimar-frontend:
+    restart: "no"
+    image: node:18.4-slim
+    ports:
+      - "5173:5173"
+    networks:
+      elimar:
+    command: "sh -c 'npm install && npm run dev'"
+    working_dir: "/app/frontend"
+    volumes:
+      - ../..:/app
+      - "elimar-frontend-cache:/app/frontend/node_modules"
