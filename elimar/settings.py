@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_vite",
     "elimar.modules.users",
 ]
 
@@ -129,3 +130,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 LOGIN_REDIRECT_URL = "/"
+
+DJANGO_VITE_ASSETS_PATH = os.path.join(BASE_DIR, "elimar/static/")
+DJANGO_VITE_DEV_MODE = DEBUG
+
+if DJANGO_VITE_DEV_MODE:
+    DJANGO_VITE_DEV_SERVER_HOST = "localhost"
+    DJANGO_VITE_DEV_SERVER_PORT = 5173
