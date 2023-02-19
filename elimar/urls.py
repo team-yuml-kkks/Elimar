@@ -14,12 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.contrib.auth import get_user_model
+from django.shortcuts import redirect
+from django.urls import include, path, reverse
 from django.views.generic.base import TemplateView
+
+
+class HomeView(TemplateView):
+    template_name="home.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        if not get_user_model().objects.first():
+            return redirect(reverse("first-sign-up"))
+
+        return super().dispatch(request, *args, **kwargs)
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path("users/", include("elimar.modules.users.urls")),
-    path("", TemplateView.as_view(template_name="home.html"), name="home"),
+    path("", HomeView.as_view(), name="home"),
 ]
