@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: "static/",
+    base: "/static/",
     build: {
         outDir: '../elimar/static/',
         manifest: true,
