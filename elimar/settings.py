@@ -34,6 +34,8 @@ ALLOWED_HOSTS: list[str] = []
 # Application definition
 
 INSTALLED_APPS = [
+    "crispy_bootstrap5",
+    "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -138,3 +140,10 @@ DJANGO_VITE_DEV_MODE = DEBUG
 if DJANGO_VITE_DEV_MODE:
     DJANGO_VITE_DEV_SERVER_HOST = "localhost"
     DJANGO_VITE_DEV_SERVER_PORT = 5173
+
+STATICFILES_DIRS = [
+    BASE_DIR / "elimar" / "static",
+]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
