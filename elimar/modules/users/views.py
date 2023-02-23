@@ -1,9 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from .forms import FirstUserSignUpForm
+from .models import User
 
 
 class FirstUserSignUpView(CreateView):
@@ -16,3 +17,9 @@ class FirstUserSignUpView(CreateView):
             return redirect(reverse("home"))
 
         return super().dispatch(request, *args, **kwargs)
+
+
+class UsersList(ListView):
+    model = User
+    paginate_by = 20
+    template_name = "users/users_list.html"

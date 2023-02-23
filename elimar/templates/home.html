@@ -3,4 +3,7 @@
 {% block content %}
   Home
   {% include "logout.html" %}
+  <div>
+    <a href="{% url 'users-list' %}">Users list</a>
+  </div>
 {% endblock %}
