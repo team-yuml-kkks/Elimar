@@ -130,6 +130,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 
 DJANGO_VITE_ASSETS_PATH = os.path.join(BASE_DIR, "elimar/static/")
 DJANGO_VITE_DEV_MODE = DEBUG
