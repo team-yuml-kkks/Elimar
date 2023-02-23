@@ -1,0 +1,18 @@
+version: "3.8"
+
+volumes:
+  elimar-generated-docs:
+
+services:
+  elimar-docs:
+    restart: "no"
+    build:
+      context: ../../docs
+      dockerfile: ../docker/images/C4Builder/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - "../../docs:/app"
+      - "elimar-generated-docs:/app/generated"
+    working_dir: "/app"
+    command: ["-w", "site"]

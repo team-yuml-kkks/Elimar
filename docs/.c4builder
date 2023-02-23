@@ -1,0 +1,32 @@
+{
+	"projectName": "Elimar",
+	"homepageName": "Overview",
+	"rootFolder": "structure",
+	"distFolder": "generated_files",
+	"generateMD": true,
+	"generatePDF": false,
+	"generateCompleteMD": true,
+	"generateCompletePDF": false,
+	"generateWEB": true,
+	"includeNavigation": true,
+	"includeTableOfContents": true,
+	"webTheme": "//unpkg.com/docsify/lib/themes/vue.css",
+	"supportSearch": "true",
+	"repoUrl": "",
+	"docsifyTemplate": "",
+	"webPort": "3000",
+	"plantumlVersion": "latest",
+	"includeBreadcrumbs": true,
+	"includeLinkToDiagram": false,
+	"diagramsOnTop": true,
+	"embedDiagram": false,
+	"excludeOtherFiles": false,
+	"generateLocalImages": true,
+	"plantumlServerUrl": "https://www.plantuml.com/plantuml",
+	"diagramFormat": "svg",
+	"charset": "UTF-8",
+	"hasRun": true,
+	"checksums": [
+		"8d70bc202a0d167b4c97b45345cad5b38e67ee38390677b33792486590ccebc0"
+	]
+}

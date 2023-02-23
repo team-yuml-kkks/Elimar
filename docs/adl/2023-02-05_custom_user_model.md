@@ -9,7 +9,7 @@ Custom permission logic might be needed later on with addition fields.
 ## Decision
 
 Decided to create `users` app that will handle authentication & authorization
-with custom User model from `AbstractUser` django model. 
+with custom User model from `AbstractUser` django model.
 
 ## Consequences
 
