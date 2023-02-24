@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
 
-from .forms import FirstUserSignUpForm
+from .forms import FirstUserSignUpForm, UserCreateForm
 from .models import User
 
 
@@ -23,6 +23,12 @@ class UsersList(ListView):
     model = User
     paginate_by = 20
     template_name = "users/users_list.html"
+
+
+class UserCreate(CreateView):
+    form_class = UserCreateForm
+    template_name = "users/user_create.html"
+    success_url = reverse_lazy("users-list")
 
 
 class UserDetailsEdit(UpdateView):
