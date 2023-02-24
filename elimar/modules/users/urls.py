@@ -17,5 +17,5 @@ urlpatterns = [
         "<int:pk>/",
         UserDetailsEdit.as_view(),
         name="user-details-edit",
-    )
+    ),
 ]

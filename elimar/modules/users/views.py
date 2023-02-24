@@ -28,13 +28,13 @@ class UsersList(ListView):
 class UserDetailsEdit(UpdateView):
     model = User
     fields = [
-        'email',
-        'password',
-        'first_name',
-        'last_name',
-        'is_staff',
-        'is_active',
-        'is_superuser'
+        "email",
+        "password",
+        "first_name",
+        "last_name",
+        "is_staff",
+        "is_active",
+        "is_superuser",
     ]
     template_name = "users/user_details_edit.html"
 
