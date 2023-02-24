@@ -37,6 +37,4 @@ class UserDetailsEdit(UpdateView):
         "is_superuser",
     ]
     template_name = "users/user_details_edit.html"
-
-    def get_success_url(self):
-        return reverse("users-list")
+    success_url = reverse_lazy("users-list")
