@@ -1,0 +1,47 @@
+name: Update C4 WIKI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/structure/**
+      - docs/build_docs.sh
+      - .github/workflows/update-c4-docs.yml
+
+jobs:
+  upload-diagrams:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js ⚙️
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install c4builder
+        run: npm i -g c4builder@0.2.16
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+
+      - name: Generate docs
+        run: c4builder
+        working-directory: docs
+
+      - name: Checkout wiki
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}.wiki
+          ref: master
+          path: ${{ github.repository }}.wiki
+
+      - name: Push to wiki
+        run: |
+          chmod +x ./docs/build_docs.sh
+          ./docs/build_docs.sh ${{ github.repository }} "C4-diagrams.md" "./docs/generated/" "Elimar"
