@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - docs/structure/**
-      - docs/build_docs.sh
+      - docs/build-docs.sh
       - .github/workflows/update-c4-docs.yml
 
 jobs:
@@ -43,5 +43,5 @@ jobs:
 
       - name: Push to wiki
         run: |
-          chmod +x ./docs/build_docs.sh
-          ./docs/build_docs.sh ${{ github.repository }} "C4-diagrams.md" "./docs/generated/" "Elimar"
+          chmod +x ./docs/build-docs.sh
+          ./docs/build-docs.sh ${{ github.repository }} "C4-diagrams.md" "./docs/generated/" "Elimar"
