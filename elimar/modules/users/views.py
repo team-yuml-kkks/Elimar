@@ -33,7 +33,6 @@ class UserDetailsEdit(UpdateView):
         "first_name",
         "last_name",
         "is_staff",
-        "is_active",
         "is_superuser",
     ]
     template_name = "users/user_details_edit.html"
