@@ -25,7 +25,7 @@ jobs:
           node-version: '16'
 
       - name: Install c4builder
-        run: npm i -g c4builder@0.2.12
+        run: npm i -g c4builder@0.2.16
 
       - name: Setup Graphviz
         uses: ts-graphviz/setup-graphviz@v1
