@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 
 from .forms import FirstUserSignUpForm
 from .models import User
@@ -23,3 +23,17 @@ class UsersList(ListView):
     model = User
     paginate_by = 20
     template_name = "users/users_list.html"
+
+
+class UserDetailsEdit(UpdateView):
+    model = User
+    fields = [
+        "email",
+        "password",
+        "first_name",
+        "last_name",
+        "is_staff",
+        "is_superuser",
+    ]
+    template_name = "users/user_details_edit.html"
+    success_url = reverse_lazy("users-list")

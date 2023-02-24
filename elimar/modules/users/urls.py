@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import FirstUserSignUpView, UsersList
+from .views import FirstUserSignUpView, UserDetailsEdit, UsersList
 
 urlpatterns = [
     path(
@@ -12,5 +12,10 @@ urlpatterns = [
         "",
         UsersList.as_view(),
         name="users-list",
+    ),
+    path(
+        "<int:pk>/",
+        UserDetailsEdit.as_view(),
+        name="user-details-edit",
     ),
 ]
