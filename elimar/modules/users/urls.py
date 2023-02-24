@@ -9,7 +9,7 @@ urlpatterns = [
         name="first-sign-up",
     ),
     path(
-        "list/",
+        "",
         UsersList.as_view(),
         name="users-list",
     ),
