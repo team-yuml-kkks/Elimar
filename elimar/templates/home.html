@@ -2,8 +2,14 @@
 
 {% block content %}
   Home
-  {% include "logout.html" %}
-  <div>
-    <a href="{% url 'users-list' %}">Users list</a>
-  </div>
+  {% if user.is_authenticated %}
+    {% include "logout.html" %}
+    <div>
+      <a href="{% url 'users-list' %}">Users list</a>
+    </div>
+  {% else %}
+    <div>
+      <a href="{% url 'login' %}">Login</a>
+    </div>
+  {% endif %}
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
@@ -19,19 +20,19 @@ class FirstUserSignUpView(CreateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class UsersList(ListView):
+class UsersList(LoginRequiredMixin, ListView):
     model = User
     paginate_by = 20
     template_name = "users/users_list.html"
 
 
-class UserCreate(CreateView):
+class UserCreate(LoginRequiredMixin, CreateView):
     form_class = UserCreateForm
     template_name = "users/user_create.html"
     success_url = reverse_lazy("users-list")
 
 
-class UserDetailsEdit(UpdateView):
+class UserDetailsEdit(LoginRequiredMixin, UpdateView):
     model = User
     fields = [
         "email",
