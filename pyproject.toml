@@ -13,9 +13,8 @@ select = [
     "T", # flake8-print
     "A", # flake8-builtins
     "Q", # flake8-quotes
-    "ANN" # flake8-annotations
 ]
-ignore = ["ANN001", "ANN002", "ANN003", "ANN101", "ANN201"]
+ignore = []
 
 # Exclude a variety of commonly ignored directories.
 exclude = [
