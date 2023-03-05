@@ -1,12 +1,17 @@
 from django.urls import path
 
-from .views import FirstUserSignUpView, UserCreate, UserDetailsEdit, UsersList
+from .views import FirstUserSignUpView, UserCreate, UserDetailsEdit, UsersList, LoginUserView
 
 urlpatterns = [
     path(
         "first-signup/",
         FirstUserSignUpView.as_view(),
         name="first-sign-up",
+    ),
+    path(
+        "login/",
+        LoginUserView.as_view(),
+        name="users-login",
     ),
     path(
         "",
