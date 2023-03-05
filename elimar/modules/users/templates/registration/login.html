@@ -1,6 +1,21 @@
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags  i18n static %}
+
+{% block content %}
+<div class="elimar-card">
+    <div class="elimar-card-image">
+        <img src="{% static 'owl.png' %}" alt="Owl Logo" />
+    </div>
+
+    <div class="card elimar-card-body elimar-card-login">
+        <div class="card-body">
+            <form method="post">
+                {% crispy form %}
+                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

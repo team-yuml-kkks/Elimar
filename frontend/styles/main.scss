@@ -52,3 +52,46 @@
         }
     }
 }
+
+.elimar-card-login {
+    width: 70%;
+    padding: 1rem 2.5rem;
+    border: none;
+
+    label {
+        font-size: 1rem;
+    }
+
+    input[type="text"], input[type="password"]  {
+        height: 3em;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+        position: absolute;
+        top: 8rem;
+        right: 2.5rem;
+
+        &:hover {
+            color: #000;
+        }
+    }
+
+    .form-check-input {
+        border: 1px solid $primary-color;
+
+        &:checked {
+            background-color: $primary-color;
+        }
+
+        &:focus {
+            border-color: none;
+            box-shadow: none;
+        }
+    }
+}
