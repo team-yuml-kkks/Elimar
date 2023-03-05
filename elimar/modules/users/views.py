@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
 
-from .forms import FirstUserSignUpForm, UserCreateForm, LoginUserForm
+from .forms import FirstUserSignUpForm, LoginUserForm, UserCreateForm
 from .models import User
 
 
@@ -54,10 +54,10 @@ class LoginUserView(LoginView):
     redirect_authenticated_user = True
 
     def form_valid(self, form):
-        remember_me = form.cleaned_data['remember_me']
+        remember_me = form.cleaned_data["remember_me"]
 
         if not remember_me:
             self.request.session.set_expiry(0)
             self.request.session.modified = True
 
-        return super(LoginUserView, self).form_valid(form)
+        return super().form_valid(form)

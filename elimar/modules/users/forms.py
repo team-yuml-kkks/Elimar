@@ -2,7 +2,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Div, Field, Layout, Submit
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.forms import ModelForm
 from django.utils.translation import gettext as _
 
@@ -76,7 +76,7 @@ class LoginUserForm(AuthenticationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ["username","password"]
+        fields = ["username", "password"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
