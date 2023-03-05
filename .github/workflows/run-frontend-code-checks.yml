@@ -1,0 +1,38 @@
+name: Run frontend code checks
+
+on:
+  pull_request:
+    paths:
+      - frontend/**
+      - .github/workflows/run-frontend-code-checks.yml
+  push:
+    branches:
+      - main
+    paths:
+      - frontend/**
+      - .github/workflows/run-frontend-code-checks.ym
+
+jobs:
+  check-code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js ⚙️
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          cache: "yarn"
+          cache-dependency-path: frontend/yarn.lock
+
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./frontend
+
+      - name: Run Prettier
+        run: git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.pull_request.base.sha }} | grep -E "^frontend/src.+(.ts|.tsx)$" | cut -d'/' -f2- | xargs -r yarn prettier --check
+        working-directory: ./frontend
